@@ -1,20 +1,31 @@
 import { useState, useEffect } from 'react'
 import { type Character } from '../lib/supabase'
-import { getRandomMatchup, processVote } from '../lib/voting'
+import { getRandomMatchup, processVote, getTotalVotes } from '../lib/voting'
 
 const VotingPage = () => {
   const [characterA, setCharacterA] = useState<Character | null>(null)
   const [characterB, setCharacterB] = useState<Character | null>(null)
   const [loading, setLoading] = useState(false)
+  const [totalVotes, setTotalVotes] = useState<number>(0)
   const [eloChanges, setEloChanges] = useState<{
     characterA: { name: string; change: number; newElo: number }
     characterB: { name: string; change: number; newElo: number }
   } | null>(null)
 
-  // Load initial matchup
+  // Load initial matchup and total votes
   useEffect(() => {
     loadMatchup()
+    loadTotalVotes()
   }, [])
+
+  const loadTotalVotes = async () => {
+    try {
+      const count = await getTotalVotes()
+      setTotalVotes(count)
+    } catch (error) {
+      console.error('Error loading total votes:', error)
+    }
+  }
 
   const loadMatchup = async () => {
     setLoading(true)
@@ -55,6 +66,9 @@ const VotingPage = () => {
       // Update local state with new ELO ratings
       setCharacterA(result.characterA)
       setCharacterB(result.characterB)
+
+      // Update total votes count
+      loadTotalVotes()
 
       // Load new matchup after 3 seconds
       setTimeout(() => {
@@ -99,6 +113,9 @@ const VotingPage = () => {
       setCharacterA(result.characterA)
       setCharacterB(result.characterB)
 
+      // Update total votes count
+      loadTotalVotes()
+
       // Load new matchup after 3 seconds
       setTimeout(() => {
         setEloChanges(null)
@@ -123,6 +140,15 @@ const VotingPage = () => {
           background: 'linear-gradient(to bottom, #ff00ff 0%, #8000ff 25%, #0080ff 50%, #00ff00 100%)',
           padding: '40px'
         }}>
+          {/* Total Votes Counter */}
+          <div className="text-center mb-6">
+            <div className="inline-block bg-yellow-400 p-4 border-4 border-black">
+              <p className="text-black font-bold text-2xl" style={{ fontFamily: 'Comic Sans MS' }}>
+                TOTAL VOTES: {totalVotes.toLocaleString()}
+              </p>
+            </div>
+          </div>
+
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-4 mb-4 flex-wrap">

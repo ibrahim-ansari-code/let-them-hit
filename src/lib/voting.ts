@@ -184,3 +184,21 @@ export async function getLeaderboard(): Promise<Character[]> {
   }
 }
 
+/**
+ * Get total number of votes cast
+ * @returns Total count of votes
+ */
+export async function getTotalVotes(): Promise<number> {
+  try {
+    const { count, error } = await supabase
+      .from('votes')
+      .select('*', { count: 'exact', head: true })
+
+    if (error) throw error
+    return count || 0
+  } catch (error) {
+    console.error('Error getting total votes:', error)
+    return 0
+  }
+}
+
