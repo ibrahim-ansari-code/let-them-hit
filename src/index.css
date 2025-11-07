@@ -4,12 +4,17 @@
 
 html, body, * {
   cursor: url('/Cursorforwebsite-32.png') 0 0, auto !important;
-  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  font-family: 'Comic Sans MS', 'Comic Neue', sans-serif !important;
+}
+
+/* Force font on all elements, overriding any inline styles */
+* {
+  font-family: 'Comic Sans MS', 'Comic Neue', sans-serif !important;
 }
 
 body {
   margin: 0;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Comic Neue', sans-serif;
   background: #000;
 }
 

@@ -38,7 +38,7 @@ const LeaderboardPage = () => {
           {/* Header with RedWhiteDivider */}
           <div className="text-center mb-6 sm:mb-8">
             <div className="bg-yellow-400 border-4 border-black p-3 sm:p-6 mb-4 inline-block">
-              <h1 className="text-3xl sm:text-5xl font-bold text-black" style={{ fontFamily: 'Comic Sans MS' }}>LEADERBOARD</h1>
+              <h1 className="text-3xl sm:text-5xl font-bold text-black" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>LEADERBOARD</h1>
             </div>
             <img 
               src="/RedWhiteDivider.jpg" 
@@ -51,14 +51,14 @@ const LeaderboardPage = () => {
           {/* Podium Section */}
           {loading ? (
             <div className="mb-12 text-center">
-              <p className="text-2xl font-bold text-black" style={{ fontFamily: 'Comic Sans MS' }}>LOADING...</p>
+              <p className="text-2xl font-bold text-black" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>LOADING...</p>
             </div>
           ) : topThree.length >= 3 ? (
             <div className="mb-8 sm:mb-12">
               <div className="flex flex-col sm:flex-row items-end justify-center gap-4 sm:gap-6">
                 {/* #2 - Left */}
                 <div className="flex flex-col items-center w-full sm:w-auto" style={{ flex: '0 0 auto' }}>
-                  <h2 className="text-2xl sm:text-4xl font-bold text-black mb-2 sm:mb-4" style={{ fontFamily: 'Comic Sans MS' }}>#2</h2>
+                  <h2 className="text-2xl sm:text-4xl font-bold text-black mb-2 sm:mb-4" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>#2</h2>
                   <img 
                     src="/BlueWhiteDividier.jpg" 
                     alt="divider" 
@@ -80,10 +80,10 @@ const LeaderboardPage = () => {
                       padding: '8px'
                     }}
                   >
-                    <p className="text-black font-bold text-lg mb-2" style={{ fontFamily: 'Comic Sans MS' }}>
+                    <p className="text-black font-bold text-lg mb-2" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
                       {topThree[1].name.toUpperCase()}
                     </p>
-                    <p className="text-black font-bold text-xs sm:text-sm mb-2" style={{ fontFamily: 'Comic Sans MS' }}>ELO: {topThree[1].elo_rating.toFixed(2)}</p>
+                    <p className="text-black font-bold text-xs sm:text-sm mb-2" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>ELO: {topThree[1].elo_rating.toFixed(2)}</p>
                     {topThree[1].image_url ? (
                       <img 
                         src={topThree[1].image_url} 
@@ -109,7 +109,7 @@ const LeaderboardPage = () => {
 
                 {/* #1 - Center (Taller) */}
                 <div className="flex flex-col items-center w-full sm:w-auto order-first sm:order-none" style={{ flex: '0 0 auto' }}>
-                  <h2 className="text-2xl sm:text-4xl font-bold text-black mb-2 sm:mb-4" style={{ fontFamily: 'Comic Sans MS' }}>#1</h2>
+                  <h2 className="text-2xl sm:text-4xl font-bold text-black mb-2 sm:mb-4" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>#1</h2>
                   <img 
                     src="/BlueWhiteDividier.jpg" 
                     alt="divider" 
@@ -131,10 +131,10 @@ const LeaderboardPage = () => {
                       padding: '8px'
                     }}
                   >
-                    <p className="text-black font-bold text-xl mb-2" style={{ fontFamily: 'Comic Sans MS' }}>
+                    <p className="text-black font-bold text-xl mb-2" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
                       {topThree[0].name.toUpperCase()}
                     </p>
-                    <p className="text-black font-bold text-xs sm:text-sm mb-2" style={{ fontFamily: 'Comic Sans MS' }}>ELO: {topThree[0].elo_rating.toFixed(2)}</p>
+                    <p className="text-black font-bold text-xs sm:text-sm mb-2" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>ELO: {topThree[0].elo_rating.toFixed(2)}</p>
                     {topThree[0].image_url ? (
                       <img 
                         src={topThree[0].image_url} 
@@ -160,7 +160,7 @@ const LeaderboardPage = () => {
 
                 {/* #3 - Right */}
                 <div className="flex flex-col items-center w-full sm:w-auto" style={{ flex: '0 0 auto' }}>
-                  <h2 className="text-2xl sm:text-4xl font-bold text-black mb-2 sm:mb-4" style={{ fontFamily: 'Comic Sans MS' }}>#3</h2>
+                  <h2 className="text-2xl sm:text-4xl font-bold text-black mb-2 sm:mb-4" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>#3</h2>
                   <img 
                     src="/BlueWhiteDividier.jpg" 
                     alt="divider" 
@@ -182,10 +182,10 @@ const LeaderboardPage = () => {
                       padding: '8px'
                     }}
                   >
-                    <p className="text-black font-bold text-lg mb-2" style={{ fontFamily: 'Comic Sans MS' }}>
+                    <p className="text-black font-bold text-lg mb-2" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
                       {topThree[2].name.toUpperCase()}
                     </p>
-                    <p className="text-black font-bold text-xs sm:text-sm mb-2" style={{ fontFamily: 'Comic Sans MS' }}>ELO: {topThree[2].elo_rating.toFixed(2)}</p>
+                    <p className="text-black font-bold text-xs sm:text-sm mb-2" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>ELO: {topThree[2].elo_rating.toFixed(2)}</p>
                     {topThree[2].image_url ? (
                       <img 
                         src={topThree[2].image_url} 
@@ -212,7 +212,7 @@ const LeaderboardPage = () => {
             </div>
           ) : (
             <div className="mb-12 text-center">
-              <p className="text-xl font-bold text-black" style={{ fontFamily: 'Comic Sans MS' }}>Need at least 3 characters for leaderboard</p>
+              <p className="text-xl font-bold text-black" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>Need at least 3 characters for leaderboard</p>
             </div>
           )}
 
@@ -238,13 +238,13 @@ const LeaderboardPage = () => {
                         padding: '6px'
                       }}
                     >
-                      <div className="text-black font-bold text-lg mb-1" style={{ fontFamily: 'Comic Sans MS' }}>
+                      <div className="text-black font-bold text-lg mb-1" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
                         #{rank}
                       </div>
-                      <p className="text-black font-bold text-xs mb-1" style={{ fontFamily: 'Comic Sans MS' }}>
+                      <p className="text-black font-bold text-xs mb-1" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
                         {character.name.toUpperCase()}
                       </p>
-                      <p className="text-black font-bold text-xs mb-1" style={{ fontFamily: 'Comic Sans MS' }}>ELO: {character.elo_rating.toFixed(2)}</p>
+                      <p className="text-black font-bold text-xs mb-1" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>ELO: {character.elo_rating.toFixed(2)}</p>
                       {character.image_url ? (
                         <img 
                           src={character.image_url} 
@@ -273,7 +273,7 @@ const LeaderboardPage = () => {
           )}
           {!loading && characters.length === 0 && (
             <div className="text-center">
-              <p className="text-xl font-bold text-black" style={{ fontFamily: 'Comic Sans MS' }}>No characters yet. Add some to see the leaderboard!</p>
+              <p className="text-xl font-bold text-black" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>No characters yet. Add some to see the leaderboard!</p>
             </div>
           )}
         </div>

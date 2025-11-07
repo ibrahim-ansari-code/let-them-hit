@@ -143,7 +143,7 @@ const VotingPage = () => {
           {/* Total Votes Counter */}
           <div className="text-center mb-6">
             <div className="inline-block bg-yellow-400 p-4 border-4 border-black">
-              <p className="text-black font-bold text-2xl" style={{ fontFamily: 'Comic Sans MS' }}>
+              <p className="text-black font-bold text-2xl" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
                 TOTAL VOTES: {totalVotes.toLocaleString()}
               </p>
             </div>
@@ -152,7 +152,7 @@ const VotingPage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-4 mb-4 flex-wrap">
-              <span className="text-5xl font-bold text-black" style={{ fontFamily: 'Comic Sans MS' }}>
+              <span className="text-5xl font-bold text-black" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
                 OR
               </span>
             </div>
@@ -175,12 +175,12 @@ const VotingPage = () => {
               }}
             >
               <div className="text-center">
-                <h2 className="text-3xl font-bold text-black mb-4" style={{ fontFamily: 'Comic Sans MS' }}>
+                <h2 className="text-3xl font-bold text-black mb-4" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
                   {characterA ? characterA.name.toUpperCase() : 'LOADING...'}
                 </h2>
                 <div className="bg-gray-200 h-64 flex items-center justify-center mb-4 overflow-hidden">
                   {loading ? (
-                    <span className="text-gray-600 text-xl font-bold" style={{ fontFamily: 'Comic Sans MS' }}>LOADING...</span>
+                    <span className="text-gray-600 text-xl font-bold" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>LOADING...</span>
                   ) : characterA && characterA.image_url ? (
                     <img 
                       src={characterA.image_url} 
@@ -188,10 +188,10 @@ const VotingPage = () => {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <span className="text-gray-600 text-xl font-bold" style={{ fontFamily: 'Comic Sans MS' }}>IMAGE PLACEHOLDER</span>
+                    <span className="text-gray-600 text-xl font-bold" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>IMAGE PLACEHOLDER</span>
                   )}
                 </div>
-                <p className="text-black font-bold text-lg" style={{ fontFamily: 'Comic Sans MS' }}>CLICK TO VOTE</p>
+                <p className="text-black font-bold text-lg" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>CLICK TO VOTE</p>
               </div>
             </div>
 
@@ -210,12 +210,12 @@ const VotingPage = () => {
               }}
             >
               <div className="text-center">
-                <h2 className="text-3xl font-bold text-black mb-4" style={{ fontFamily: 'Comic Sans MS' }}>
+                <h2 className="text-3xl font-bold text-black mb-4" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
                   {characterB ? characterB.name.toUpperCase() : 'LOADING...'}
                 </h2>
                 <div className="bg-gray-200 h-64 flex items-center justify-center mb-4 overflow-hidden">
                   {loading ? (
-                    <span className="text-gray-600 text-xl font-bold" style={{ fontFamily: 'Comic Sans MS' }}>LOADING...</span>
+                    <span className="text-gray-600 text-xl font-bold" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>LOADING...</span>
                   ) : characterB && characterB.image_url ? (
                     <img 
                       src={characterB.image_url} 
@@ -223,10 +223,10 @@ const VotingPage = () => {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <span className="text-gray-600 text-xl font-bold" style={{ fontFamily: 'Comic Sans MS' }}>IMAGE PLACEHOLDER</span>
+                    <span className="text-gray-600 text-xl font-bold" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>IMAGE PLACEHOLDER</span>
                   )}
                 </div>
-                <p className="text-black font-bold text-lg" style={{ fontFamily: 'Comic Sans MS' }}>CLICK TO VOTE</p>
+                <p className="text-black font-bold text-lg" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>CLICK TO VOTE</p>
               </div>
             </div>
           </div>
@@ -235,7 +235,7 @@ const VotingPage = () => {
           {eloChanges && (
             <div className="mb-8 text-center">
               <div className="inline-block bg-yellow-400 p-6 border-4 border-black">
-                <h3 className="text-2xl font-bold text-black mb-4" style={{ fontFamily: 'Comic Sans MS' }}>
+                <h3 className="text-2xl font-bold text-black mb-4" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
                   ELO CHANGES
                 </h3>
                 <div className="flex justify-center gap-8 flex-wrap">
@@ -265,7 +265,7 @@ const VotingPage = () => {
               disabled={loading}
               className="px-8 py-4 text-xl cursor-pointer transition-colors"
               style={{
-                fontFamily: 'Comic Sans MS',
+                fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif",
                 fontWeight: 'bold',
                 color: '#000',
                 background: 'transparent',
@@ -289,7 +289,7 @@ const VotingPage = () => {
               disabled={loading || !characterA || !characterB}
               className="px-8 py-4 text-xl cursor-pointer transition-colors"
               style={{
-                fontFamily: 'Comic Sans MS',
+                fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif",
                 fontWeight: 'bold',
                 color: '#000',
                 background: 'transparent',

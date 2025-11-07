@@ -36,7 +36,7 @@ const WelcomePopup = ({ onClose }: WelcomePopupProps) => {
       >
         <h1 
           className="text-4xl md:text-6xl font-bold text-black mb-4"
-          style={{ fontFamily: 'Comic Sans MS' }}
+          style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}
         >
           TAP ON WHO YOUR LETTING HIT / TAKE YOUR BUTT
         </h1>
@@ -44,7 +44,7 @@ const WelcomePopup = ({ onClose }: WelcomePopupProps) => {
           onClick={handleClose}
           className="mt-6 px-8 py-4 text-2xl font-bold text-black underline"
           style={{
-            fontFamily: 'Comic Sans MS',
+            fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif",
             background: 'transparent',
             border: 'none',
             cursor: 'pointer'
