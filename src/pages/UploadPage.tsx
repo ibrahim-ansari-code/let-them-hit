@@ -152,7 +152,7 @@ const UploadPage = () => {
       const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
       const filePath = `characters/${fileName}`
 
-      const { error: uploadError, data: uploadData } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from('character-images')
         .upload(filePath, file, {
           cacheControl: '3600',
