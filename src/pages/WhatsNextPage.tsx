@@ -9,7 +9,6 @@ const WhatsNextPage = () => {
   const [textVisible, setTextVisible] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [glitchText, setGlitchText] = useState({ line1: 'create', line2: 'stories...' })
-  const [isComics, setIsComics] = useState(false)
   const glitchIntervalRef = useRef<number | null>(null)
 
   // Random glitch characters
@@ -126,7 +125,6 @@ const WhatsNextPage = () => {
   // Handle hover glitch animation
   useEffect(() => {
     if (isHovered) {
-      const startTime = Date.now()
       const duration = 300 // 0.3 seconds
       
       // Rapidly change to glitch characters
@@ -143,7 +141,6 @@ const WhatsNextPage = () => {
           clearInterval(glitchIntervalRef.current)
           glitchIntervalRef.current = null
         }
-        setIsComics(true)
         setGlitchText({
           line1: 'create',
           line2: 'comics...'
@@ -155,7 +152,6 @@ const WhatsNextPage = () => {
         clearInterval(glitchIntervalRef.current)
         glitchIntervalRef.current = null
       }
-      setIsComics(false)
       setGlitchText({
         line1: 'create',
         line2: 'stories...'

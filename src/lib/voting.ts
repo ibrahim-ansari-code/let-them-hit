@@ -22,8 +22,8 @@ export async function processVote(
 ) {
   try {
     // Step 1: Fetch both characters to get their current ELO ratings
-    const { data: characters, error: fetchError } = await supabase
-      .from('characters')
+    const { data: characters, error: fetchError } = await (supabase
+      .from('characters') as any)
       .select('*')
       .in('id', [characterAId, characterBId])
 
@@ -33,8 +33,8 @@ export async function processVote(
     }
 
     // Find which is A and which is B
-    const characterA = characters.find(c => c.id === characterAId) as Character
-    const characterB = characters.find(c => c.id === characterBId) as Character
+    const characterA = characters.find((c: Character) => c.id === characterAId) as Character
+    const characterB = characters.find((c: Character) => c.id === characterBId) as Character
 
     if (!characterA || !characterB) {
       throw new Error('Could not find both characters')
@@ -63,8 +63,8 @@ export async function processVote(
     const bDraws = resultA === 0.5 ? 1 : 0
 
     // Update character A
-    const { error: updateAError } = await supabase
-      .from('characters')
+    const { error: updateAError } = await (supabase
+      .from('characters') as any)
       .update({
         elo_rating: eloCalculation.newEloA,
         total_votes: characterA.total_votes + 1,
@@ -77,8 +77,8 @@ export async function processVote(
     if (updateAError) throw updateAError
 
     // Update character B
-    const { error: updateBError } = await supabase
-      .from('characters')
+    const { error: updateBError } = await (supabase
+      .from('characters') as any)
       .update({
         elo_rating: eloCalculation.newEloB,
         total_votes: characterB.total_votes + 1,
@@ -91,8 +91,8 @@ export async function processVote(
     if (updateBError) throw updateBError
 
     // Step 4: Record the vote in the votes table
-    const { data: vote, error: voteError } = await supabase
-      .from('votes')
+    const { data: vote, error: voteError } = await (supabase
+      .from('votes') as any)
       .insert({
         character_a_id: characterAId,
         character_b_id: characterBId,
@@ -146,8 +146,8 @@ export async function processVote(
 export async function getRandomMatchup(): Promise<[Character, Character] | null> {
   try {
     // Get all characters
-    const { data: characters, error } = await supabase
-      .from('characters')
+    const { data: characters, error } = await (supabase
+      .from('characters') as any)
       .select('*')
       .order('elo_rating', { ascending: false })
 
@@ -157,8 +157,8 @@ export async function getRandomMatchup(): Promise<[Character, Character] | null>
     }
 
     // Pick two random characters
-    const shuffled = [...characters].sort(() => Math.random() - 0.5)
-    return [shuffled[0], shuffled[1]]
+    const shuffled = [...(characters as Character[])].sort(() => Math.random() - 0.5)
+    return [shuffled[0] as Character, shuffled[1] as Character]
   } catch (error) {
     console.error('Error getting random matchup:', error)
     return null
@@ -171,13 +171,13 @@ export async function getRandomMatchup(): Promise<[Character, Character] | null>
  */
 export async function getLeaderboard(): Promise<Character[]> {
   try {
-    const { data, error } = await supabase
-      .from('characters')
+    const { data, error } = await (supabase
+      .from('characters') as any)
       .select('*')
       .order('elo_rating', { ascending: false })
 
     if (error) throw error
-    return data || []
+    return (data as Character[]) || []
   } catch (error) {
     console.error('Error getting leaderboard:', error)
     return []
@@ -190,8 +190,8 @@ export async function getLeaderboard(): Promise<Character[]> {
  */
 export async function getTotalVotes(): Promise<number> {
   try {
-    const { count, error } = await supabase
-      .from('votes')
+    const { count, error } = await (supabase
+      .from('votes') as any)
       .select('*', { count: 'exact', head: true })
 
     if (error) throw error

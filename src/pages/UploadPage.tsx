@@ -178,8 +178,8 @@ const UploadPage = () => {
       const imageUrl = urlData.publicUrl
 
       // Step 3: Insert character into database
-      const { error: insertError } = await supabase
-        .from('characters')
+      const { error: insertError } = await (supabase
+        .from('characters') as any)
         .insert({
           name: name.trim(),
           image_url: imageUrl,

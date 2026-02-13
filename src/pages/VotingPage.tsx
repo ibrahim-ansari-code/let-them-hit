@@ -11,6 +11,29 @@ const VotingPage = () => {
     characterA: { name: string; change: number; newElo: number }
     characterB: { name: string; change: number; newElo: number }
   } | null>(null)
+  const [rateLimitError, setRateLimitError] = useState<string | null>(null)
+
+  // Rate limiter: max 1 vote per second
+  const RATE_LIMIT_MS = 1000
+  const LAST_VOTE_KEY = 'lastVoteTimestamp'
+
+  const checkRateLimit = (): boolean => {
+    const lastVote = localStorage.getItem(LAST_VOTE_KEY)
+    if (lastVote) {
+      const timeSinceLastVote = Date.now() - parseInt(lastVote, 10)
+      if (timeSinceLastVote < RATE_LIMIT_MS) {
+        const remainingTime = ((RATE_LIMIT_MS - timeSinceLastVote) / 1000).toFixed(1)
+        setRateLimitError(`Please wait ${remainingTime} seconds before voting again.`)
+        setTimeout(() => setRateLimitError(null), 2000)
+        return false
+      }
+    }
+    return true
+  }
+
+  const recordVote = () => {
+    localStorage.setItem(LAST_VOTE_KEY, Date.now().toString())
+  }
 
   // Load initial matchup and total votes
   useEffect(() => {
@@ -45,8 +68,15 @@ const VotingPage = () => {
   const handleVote = async (winnerId: string) => {
     if (!characterA || !characterB) return
 
+    // Check rate limit
+    if (!checkRateLimit()) {
+      return
+    }
+
     setLoading(true)
+    setRateLimitError(null)
     try {
+      recordVote()
       const result = await processVote(characterA.id, characterB.id, winnerId)
       
       // Show ELO changes below
@@ -91,8 +121,15 @@ const VotingPage = () => {
   const handleDraw = async () => {
     if (!characterA || !characterB) return
 
+    // Check rate limit
+    if (!checkRateLimit()) {
+      return
+    }
+
     setLoading(true)
+    setRateLimitError(null)
     try {
+      recordVote()
       const result = await processVote(characterA.id, characterB.id, null) // null = draw
       
       // Show ELO changes below
@@ -310,11 +347,22 @@ const VotingPage = () => {
             </button>
           </div>
 
+          {/* Rate limit error message */}
+          {rateLimitError && (
+            <div className="mb-4 text-center">
+              <div className="inline-block bg-red-400 p-4 border-4 border-black">
+                <p className="text-black font-bold text-xl" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
+                  {rateLimitError}
+                </p>
+              </div>
+            </div>
+          )}
+
           {/* Decorative elements */}
           <div className="mt-8 text-center">
             <div className="inline-block bg-green-400 p-4 border-4 border-black">
-              <p className="text-black font-bold">
-                <span className="text-2xl">⭐</span> WHO ARE YOU LETTING HIT? <span className="text-2xl">⭐</span>
+              <p className="text-black font-bold text-xl" style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}>
+                WHO ARE YOU LETTING HIT?
               </p>
             </div>
           </div>
