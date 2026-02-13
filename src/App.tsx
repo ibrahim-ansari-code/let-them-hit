@@ -6,6 +6,7 @@ import WelcomePopup from './components/WelcomePopup'
 import VotingPage from './pages/VotingPage'
 import LeaderboardPage from './pages/LeaderboardPage'
 import UploadPage from './pages/UploadPage'
+import WhatsNextPage from './pages/WhatsNextPage'
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(true)
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<VotingPage />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
           <Route path="/upload" element={<UploadPage />} />
+          <Route path="/whats-next" element={<WhatsNextPage />} />
         </Routes>
         <Analytics />
       </div>

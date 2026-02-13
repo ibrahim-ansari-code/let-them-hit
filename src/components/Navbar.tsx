@@ -25,7 +25,7 @@ const Navbar = () => {
   }, [showBubble])
 
   return (
-    <nav className="bg-black border-b-4 border-dotted border-white p-2 sm:p-4">
+    <nav className="bg-black border-b-4 border-dotted border-white p-2 sm:p-4 relative">
       <div className="flex items-center justify-center gap-2 sm:gap-8 flex-wrap">
         <Link 
           to="/" 
@@ -88,6 +88,16 @@ const Navbar = () => {
             </div>
           )}
         </div>
+      </div>
+      {/* Top right button */}
+      <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
+        <Link 
+          to="/whats-next" 
+          className="text-yellow-400 text-base sm:text-xl font-bold underline hover:text-yellow-300 px-2 py-1 sm:px-3 sm:py-2"
+          style={{ textShadow: '2px 2px 0px #000', fontFamily: "'Comic Sans MS', 'Comic Neue', sans-serif" }}
+        >
+          whats next
+        </Link>
       </div>
     </nav>
   )

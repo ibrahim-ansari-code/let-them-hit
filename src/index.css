@@ -18,3 +18,8 @@ body {
   background: #000;
 }
 
+/* Override for WhatsNextPage - use professional fonts */
+[data-whats-next-page],
+[data-whats-next-page] * {
+  font-family: 'Cormorant Garamond', serif !important;
+}
